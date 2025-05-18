@@ -1,0 +1,487 @@
+<html class="scroll-smooth" lang="th">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   นับเวลาคบกันพร้อมรูปและอนิเมชั่นหัวใจเต้น
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: 'Kanit', sans-serif;
+      background: linear-gradient(135deg, #fef3f7, #fce7f3, #f9a8d4);
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* หิมะตกหลายสีขาวและชมพูอ่อน */
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      pointer-events: none;
+      user-select: none;
+      z-index: 9999;
+      color: white;
+      filter: drop-shadow(0 0 2px rgba(255 192 203 / 0.8));
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      will-change: transform;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10px) translateX(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) translateX(20px);
+        opacity: 0;
+      }
+    }
+
+    /* กล่องผลลัพธ์ */
+    #resultBox {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255 255 255 / 0.85);
+      border-radius: 2rem;
+      padding: 2.5rem 3rem;
+      max-width: 360px;
+      width: 90vw;
+      box-shadow: 0 10px 30px rgba(219, 39, 119, 0.3);
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #db2777;
+      line-height: 1.6;
+      user-select: none;
+      pointer-events: none;
+      z-index: 10000;
+      filter: drop-shadow(0 0 10px #db2777);
+      animation: pulseGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        text-shadow:
+          0 0 6px #f9a8d4,
+          0 0 12px #f472b6,
+          0 0 18px #db2777,
+          0 0 24px #db2777;
+      }
+      50% {
+        text-shadow:
+          0 0 12px #f9a8d4,
+          0 0 24px #f472b6,
+          0 0 36px #db2777,
+          0 0 48px #db2777;
+      }
+    }
+
+    /* ฟอร์มแบบโปร่งแสงเล็กๆ ด้านล่าง */
+    #inputForm {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255 255 255 / 0.7);
+      border-radius: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      box-shadow: 0 4px 15px rgba(219, 39, 119, 0.25);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      max-width: 360px;
+      width: 90vw;
+      z-index: 10001;
+      user-select: none;
+    }
+
+    #inputForm input[type="date"] {
+      border: none;
+      border-radius: 1rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #db2777;
+      background: rgba(255 255 255 / 0.9);
+      box-shadow: inset 0 0 5px #f9a8d4;
+      transition: box-shadow 0.3s ease;
+      flex-grow: 1;
+      user-select: text;
+    }
+
+    #inputForm input[type="date"]:focus {
+      outline: none;
+      box-shadow: 0 0 10px #db2777;
+      background: white;
+    }
+
+    #inputForm button {
+      background: #db2777;
+      color: white;
+      font-weight: 700;
+      border-radius: 1rem;
+      padding: 0.5rem 1.25rem;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+
+    #inputForm button:hover {
+      background: #be185d;
+    }
+
+    #inputForm button:active {
+      background: #9d174d;
+    }
+
+    /* Responsive font size for result */
+    @media (max-width: 400px) {
+      #resultBox {
+        font-size: 1.1rem;
+        padding: 2rem 2rem;
+      }
+    }
+
+    /* Container for images and names */
+    #coupleContainer {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100vw;
+      max-width: 700px;
+      height: 180px;
+      pointer-events: none;
+      user-select: none;
+      z-index: 10002;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1rem;
+      box-sizing: border-box;
+    }
+
+    /* Left person */
+    .person-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      max-width: 140px;
+      flex-shrink: 0;
+    }
+
+    .person-left img {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 9999px;
+      border: 4px solid #db2777;
+      box-shadow: 0 0 15px #f472b6;
+      filter: drop-shadow(0 0 5px #db2777);
+      user-select: none;
+    }
+
+    .person-left .name {
+      font-weight: 900;
+      font-size: 1.3rem;
+      color: #db2777;
+      text-shadow: 0 0 6px #f9a8d4;
+      animation: namePulse 3s ease-in-out infinite;
+      user-select: text;
+    }
+
+    /* Right person */
+    .person-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      max-width: 140px;
+      flex-shrink: 0;
+    }
+
+    .person-right img {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 9999px;
+      border: 4px solid #db2777;
+      box-shadow: 0 0 15px #f472b6;
+      filter: drop-shadow(0 0 5px #db2777);
+      user-select: none;
+    }
+
+    .person-right .name {
+      font-weight: 900;
+      font-size: 1.3rem;
+      color: #db2777;
+      text-shadow: 0 0 6px #f9a8d4;
+      animation: namePulse 3s ease-in-out infinite;
+      user-select: text;
+    }
+
+    @keyframes namePulse {
+      0%, 100% {
+        text-shadow:
+          0 0 6px #f9a8d4,
+          0 0 12px #f472b6,
+          0 0 18px #db2777;
+      }
+      50% {
+        text-shadow:
+          0 0 12px #f9a8d4,
+          0 0 24px #f472b6,
+          0 0 36px #db2777;
+      }
+    }
+
+    /* Heart container in center */
+    #heartContainer {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 120px;
+      height: 120px;
+      pointer-events: none;
+      user-select: none;
+      z-index: 10003;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Two half hearts that combine */
+    .half-heart {
+      position: absolute;
+      width: 60px;
+      height: 120px;
+      overflow: visible;
+      filter: drop-shadow(0 0 5px #db2777);
+      animation: heartbeat 1.5s ease-in-out infinite;
+      transform-origin: center bottom;
+    }
+
+    .half-heart.left {
+      left: 0;
+      clip-path: polygon(0 0, 100% 0, 50% 100%, 0 100%);
+      animation-delay: 0s;
+    }
+
+    .half-heart.right {
+      right: 0;
+      clip-path: polygon(100% 0, 0 0, 50% 100%, 100% 100%);
+      animation-delay: 0.75s;
+    }
+
+    /* Heart shape using SVG fill */
+    svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      user-select: none;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 5px #db2777);
+      }
+      50% {
+        transform: scale(1.15);
+        filter: drop-shadow(0 0 15px #f472b6);
+      }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+      #coupleContainer {
+        height: 140px;
+        max-width: 90vw;
+      }
+      .person-left img,
+      .person-right img {
+        width: 110px;
+        height: 110px;
+      }
+      .person-left .name,
+      .person-right .name {
+        font-size: 1.1rem;
+      }
+      #heartContainer {
+        width: 90px;
+        height: 90px;
+      }
+      .half-heart {
+        width: 45px;
+        height: 90px;
+      }
+    }
+  </style>
+ </head>
+ <body>
+  <!-- หิมะตก -->
+  <script>
+   const snowflakeCount = 40;
+    const colors = ['#ffffff', '#ffe4f1', '#fce7f3', '#f9a8d4', '#f472b6'];
+
+    function randomRange(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function createSnowflake() {
+      const snowflake = document.createElement('div');
+      snowflake.classList.add('snowflake');
+      snowflake.style.left = `${randomRange(0, 100)}vw`;
+      snowflake.style.fontSize = `${randomRange(10, 24)}px`;
+      snowflake.style.animationDuration = `${randomRange(8, 20)}s`;
+      snowflake.style.animationDelay = `${randomRange(0, 20)}s`;
+      snowflake.style.opacity = randomRange(0.3, 0.9);
+      snowflake.style.color = colors[Math.floor(randomRange(0, colors.length))];
+      snowflake.innerHTML = "&#10052;"; // ❄ snowflake unicode
+      document.body.appendChild(snowflake);
+
+      snowflake.addEventListener('animationiteration', () => {
+        snowflake.style.left = `${randomRange(0, 100)}vw`;
+        snowflake.style.fontSize = `${randomRange(10, 24)}px`;
+        snowflake.style.animationDuration = `${randomRange(8, 20)}s`;
+        snowflake.style.opacity = randomRange(0.3, 0.9);
+        snowflake.style.color = colors[Math.floor(randomRange(0, colors.length))];
+      });
+    }
+
+    for (let i = 0; i < snowflakeCount; i++) {
+      createSnowflake();
+    }
+  </script>
+  <!-- รูปและชื่อคู่รัก -->
+  <div aria-label="รูปและชื่อคู่รัก" id="coupleContainer">
+   <div aria-label="รูปและชื่อฝ่ายซ้าย" class="person-left">
+    <img alt="ภาพผู้หญิงน่ารักยิ้มหวาน ใส่ชุดสีชมพู กำลังยืนถ่ายรูปในสวนดอกไม้" draggable="false" height="140" src="https://storage.googleapis.com/a1aa/image/d1b7e2ad-d30f-43f3-6edb-57cf271717ec.jpg" width="140"/>
+    <div aria-label="ชื่อฝ่ายซ้าย" class="name">
+     น้ำหวาน
+    </div>
+   </div>
+   <div aria-label="รูปและชื่อฝ่ายขวา" class="person-right">
+    <img alt="ภาพผู้ชายหล่อ ใส่เสื้อเชิ้ตสีขาว กำลังยิ้มและยืนถ่ายรูปในสวนดอกไม้" draggable="false" height="140" src="https://storage.googleapis.com/a1aa/image/3a68488a-87b3-4382-c34b-98671172d7a1.jpg" width="140"/>
+    <div aria-label="ชื่อฝ่ายขวา" class="name">
+     ต้นกล้า
+    </div>
+   </div>
+  </div>
+  <!-- หัวใจขัดครึ่งซ้ายขวาและเต้น -->
+  <div aria-hidden="true" aria-label="หัวใจเต้น" id="heartContainer">
+   <div aria-hidden="true" class="half-heart left">
+    <svg aria-hidden="true" fill="#db2777" focusable="false" viewbox="0 0 32 29.6" xmlns="http://www.w3.org/2000/svg">
+     <path d="M23.6,0c-3.4,0-6.4,2.1-7.6,5.2C14.8,2.1,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,16,21.2,16,21.2s16-11.8,16-21.2C32,3.8,28.2,0,23.6,0z">
+     </path>
+    </svg>
+   </div>
+   <div aria-hidden="true" class="half-heart right">
+    <svg aria-hidden="true" fill="#db2777" focusable="false" viewbox="0 0 32 29.6" xmlns="http://www.w3.org/2000/svg">
+     <path d="M23.6,0c-3.4,0-6.4,2.1-7.6,5.2C14.8,2.1,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,16,21.2,16,21.2s16-11.8,16-21.2C32,3.8,28.2,0,23.6,0z">
+     </path>
+    </svg>
+   </div>
+  </div>
+  <!-- กล่องผลลัพธ์ -->
+  <div aria-atomic="true" aria-label="เวลาที่คบกัน" aria-live="polite" id="resultBox" role="region">
+   กดเลือกวันที่คบกันด้านล่างเพื่อดูผลลัพธ์
+  </div>
+  <!-- ฟอร์มเลือกวันที่ -->
+  <form aria-label="ฟอร์มเลือกวันที่เริ่มคบกัน" id="inputForm">
+   <input aria-describedby="dateHelp" aria-required="true" id="startDate" max="" name="startDate" required="" title="เลือกวันที่เริ่มคบกัน" type="date"/>
+   <button aria-label="คำนวณเวลา" type="submit">
+    <i class="fas fa-heart">
+    </i>
+    คำนวณ
+   </button>
+  </form>
+  <script>
+   // ตั้งค่าวันที่สูงสุดเป็นวันนี้
+    const startDateInput = document.getElementById('startDate');
+    const today = new Date().toISOString().split('T')[0];
+    startDateInput.setAttribute('max', today);
+
+    const resultBox = document.getElementById('resultBox');
+    const inputForm = document.getElementById('inputForm');
+
+    // ฟังก์ชันคำนวณเวลาคบกัน
+    function calculateDuration(start) {
+      const now = new Date();
+      const startDate = new Date(start);
+      const diffTime = now - startDate;
+      if (diffTime < 0) return null;
+
+      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+      const weeks = Math.floor(diffDays / 7);
+      const daysLeft = diffDays % 7;
+
+      const totalDays = diffDays;
+      const daysToOneMonth = 30 - diffDays > 0 ? 30 - diffDays : 0;
+
+      return {
+        weeks,
+        daysLeft,
+        totalDays,
+        daysToOneMonth,
+      };
+    }
+
+    // ฟังก์ชันแสดงผลลัพธ์
+    function showResult(duration) {
+      if (!duration) {
+        resultBox.innerHTML = 'วันที่เริ่มคบกันต้องไม่ใช่วันที่ในอนาคต กรุณาเลือกวันที่ใหม่';
+        return;
+      }
+
+      let message = `คุณคบกันมาแล้ว <span style="font-weight: 900;">${duration.weeks}</span> สัปดาห์ <span style="font-weight: 900;">${duration.daysLeft}</span> วัน<br>`;
+      message += `รวมทั้งหมด <span style="font-weight: 900;">${duration.totalDays}</span> วัน<br>`;
+
+      if (duration.daysToOneMonth > 0) {
+        message += `เหลืออีก <span style="font-weight: 900;">${duration.daysToOneMonth}</span> วัน จะครบ 1 เดือน`;
+      } else {
+        message += `<span style="color:#db2777; font-weight: 900;">ครบ 1 เดือนหรือมากกว่าแล้ว! 💖</span>`;
+      }
+
+      resultBox.innerHTML = message;
+    }
+
+    // กำหนดวันที่เริ่มคบเป็น 10 พ.ค. 2568 (1005/68)
+    // ปี 2568 ในค.ศ. คือ 2025 (2568 - 543 = 2025)
+    // วันที่ 10/05/2568 = 10 May 2025
+    // แสดงผลลัพธ์เริ่มต้น
+    const presetDate = '2025-05-10';
+    const initialDuration = calculateDuration(presetDate);
+    showResult(initialDuration);
+    startDateInput.value = presetDate;
+
+    // ฟอร์ม submit
+    inputForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const startDateValue = startDateInput.value;
+      if (!startDateValue) return;
+
+      const duration = calculateDuration(startDateValue);
+      showResult(duration);
+    });
+  </script>
+ </body>
+</html>
