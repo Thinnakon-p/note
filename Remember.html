@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>บันทึกความทรงจำ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: 'Sarabun', sans-serif;
+      background: linear-gradient(to right, #fdfbfb, #ebedee);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background-color: #fff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    textarea {
+      resize: none;
+      height: 100px;
+      padding: 1rem;
+      font-size: 1rem;
+    }
+
+    input[type="file"] {
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 0.7rem;
+      background-color: #ffb347;
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #ff944d;
+    }
+
+    #memoryList {
+      margin-top: 2rem;
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .memory {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .memory img,
+    .memory video {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📖 บันทึกความทรงจำ</h1>
+    <form id="memoryForm">
+      <textarea placeholder="เขียนความทรงจำของคุณ..." required></textarea>
+      <input type="file" accept="image/*,video/*" id="mediaInput" required>
+      <button type="submit">บันทึก</button>
+    </form>
+
+    <div id="memoryList"></div>
+  </div>
+
+  <script>
+    document.getElementById("memoryForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const textarea = this.querySelector("textarea");
+      const fileInput = document.getElementById("mediaInput");
+      const file = fileInput.files[0];
+
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function() {
+        let mediaHTML = "";
+
+        if (file.type.startsWith("image/")) {
+          mediaHTML = `<img src="${reader.result}" alt="Memory Image">`;
+        } else if (file.type.startsWith("video/")) {
+          mediaHTML = `<video controls><source src="${reader.result}" type="${file.type}">วิดีโอนี้ไม่รองรับบนเบราว์เซอร์ของคุณ</video>`;
+        }
+
+        const memoryHTML = `
+          <div class="memory">
+            <p>${textarea.value}</p>
+            ${mediaHTML}
+          </div>
+        `;
+
+        document.getElementById("memoryList").innerHTML += memoryHTML;
+        textarea.value = "";
+        fileInput.value = "";
+      }
+
+      reader.readAsDataURL(file);
+    });
+  </script>
+</body>
+</html>
