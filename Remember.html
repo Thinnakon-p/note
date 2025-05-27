@@ -65,6 +65,7 @@
           <label for="memoryText" class="mb-2 font-medium text-gray-700">เล่าความทรงจำ:</label>
           <textarea
             id="memoryText"
+            name="memoryText"
             placeholder="เล่าเรื่องราวที่อยากจดจำไว้..."
             required
             rows="5"
@@ -77,6 +78,7 @@
               <input
                 type="date"
                 id="memoryDate"
+                name="memoryDate"
                 required
                 class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 transition"
               />
@@ -86,6 +88,7 @@
               <input
                 type="text"
                 id="memoryLocation"
+                name="memoryLocation"
                 placeholder="ระบุสถานที่ (ถ้ามี)"
                 class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 transition"
               />
@@ -172,7 +175,7 @@
   </div>
 
   <script>
-    let memories = [];
+    let memories = JSON.parse(localStorage.getItem('memories')) || [];
     let currentFiles = [];
 
     // Elements
@@ -367,6 +370,15 @@
       event.target.value = '';
     }
 
+    // Save memories to localStorage
+    function saveMemories() {
+      try {
+        localStorage.setItem('memories', JSON.stringify(memories));
+      } catch (e) {
+        console.error('Error saving memories to localStorage', e);
+      }
+    }
+
     // Handle form submission
     memoryForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -392,6 +404,9 @@
       // Add new memory to the beginning
       memories.unshift(newMemory);
 
+      // Save to localStorage
+      saveMemories();
+
       // Reset form and preview
       memoryForm.reset();
       currentFiles = [];
@@ -410,6 +425,7 @@
     function deleteMemory(index) {
       if (confirm('แน่ใจหรือไม่ที่จะลบความทรงจำนี้?')) {
         memories.splice(index, 1);
+        saveMemories();
         displayMemories();
       }
     }
