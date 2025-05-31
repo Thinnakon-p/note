@@ -1,0 +1,951 @@
+<html lang="th">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   เลขศาสตร์และลักษณะนิสัย
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: 'Kanit', sans-serif;
+    }
+  </style>
+ </head>
+ <body class="bg-gray-50 text-gray-900">
+  <header class="bg-white shadow sticky top-0 z-50">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+    <h1 class="text-2xl font-extrabold text-indigo-700">
+     เลขศาสตร์และลักษณะนิสัย
+    </h1>
+    <nav class="hidden md:flex space-x-6 text-indigo-600 font-semibold">
+     <a class="hover:text-indigo-800 transition" href="#birthday">
+      วันเกิด
+     </a>
+     <a class="hover:text-indigo-800 transition" href="#idcard">
+      เลขท้ายบัตรประชาชน
+     </a>
+     <a class="hover:text-indigo-800 transition" href="#favorite">
+      เลขที่ชอบ
+     </a>
+     <a class="hover:text-indigo-800 transition" href="#birthdaytraits">
+      ลักษณะนิสัยวันเกิด
+     </a>
+     <a class="hover:text-indigo-800 transition" href="#monthtraits">
+      ลักษณะเดือนเกิด
+     </a>
+    </nav>
+    <button class="md:hidden text-indigo-600 focus:outline-none" id="menu-btn">
+     <i class="fas fa-bars fa-lg">
+     </i>
+    </button>
+   </div>
+   <div class="hidden md:hidden bg-white border-t border-indigo-100" id="mobile-menu">
+    <nav class="flex flex-col space-y-2 p-4 text-indigo-700 font-semibold">
+     <a class="hover:text-indigo-900 transition" href="#birthday">
+      วันเกิด
+     </a>
+     <a class="hover:text-indigo-900 transition" href="#idcard">
+      เลขท้ายบัตรประชาชน
+     </a>
+     <a class="hover:text-indigo-900 transition" href="#favorite">
+      เลขที่ชอบ
+     </a>
+     <a class="hover:text-indigo-900 transition" href="#birthdaytraits">
+      ลักษณะนิสัยวันเกิด
+     </a>
+     <a class="hover:text-indigo-900 transition" href="#monthtraits">
+      ลักษณะเดือนเกิด
+     </a>
+    </nav>
+   </div>
+  </header>
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
+   <!-- Section: วิธีคำนวณเลขวันเกิด -->
+   <section class="bg-white rounded-lg shadow p-6" id="birthday">
+    <h2 class="text-3xl font-bold text-indigo-700 mb-4 flex items-center gap-3">
+     <i class="fas fa-birthday-cake text-indigo-500">
+     </i>
+     วันเกิด (วัน/เดือน/ปี)
+    </h2>
+    <p class="text-lg leading-relaxed text-gray-700">
+     วิธีคำนวณเลขวันเกิด: รวมตัวเลขทั้งหมดของวัน เดือน และปีเกิดเข้าด้วยกัน แล้วลดเลขจนเหลือเลขหลักเดียว เช่น 15/6/1990 → 1+5+6+1+9+9+0 = 31 → 3+1 = 4
+    </p>
+    <div class="mt-6 flex flex-col sm:flex-row sm:items-center sm:space-x-6 space-y-4 sm:space-y-0">
+     <img alt="ภาพปฏิทินแสดงวันที่ 15 มิถุนายน 1990" class="rounded-lg shadow-md w-full sm:w-1/2 object-cover" height="200" loading="lazy" src="https://storage.googleapis.com/a1aa/image/3b8c22f6-aaad-4413-00e7-dec4b35e2a6e.jpg" width="300"/>
+     <div class="text-gray-700 text-base sm:w-1/2">
+      <p>
+       ตัวอย่าง: วันเกิด 15 มิถุนายน 1990
+      </p>
+      <p class="mt-2 font-semibold text-indigo-600">
+       1 + 5 + 6 + 1 + 9 + 9 + 0 = 31
+      </p>
+      <p class="font-semibold text-indigo-600">
+       3 + 1 = 4
+      </p>
+      <p class="mt-2">
+       ดังนั้นเลขวันเกิดคือ
+       <span class="font-bold text-indigo-700">
+        4
+       </span>
+      </p>
+     </div>
+    </div>
+   </section>
+   <!-- Section: เลขท้ายบัตรประชาชน -->
+   <section class="bg-white rounded-lg shadow p-6" id="idcard">
+    <h2 class="text-3xl font-bold text-indigo-700 mb-4 flex items-center gap-3">
+     <i class="fas fa-id-card-alt text-indigo-500">
+     </i>
+     เลขท้ายบัตรประชาชน
+    </h2>
+    <p class="text-lg leading-relaxed text-gray-700">
+     วิธีใช้เลขท้ายบัตรประชาชน: สามารถใช้เลข 2 ตัวท้าย หรือรวมเลขทั้งหมดของบัตรประชาชนเพื่อวิเคราะห์
+    </p>
+    <div class="mt-6 flex flex-col sm:flex-row sm:items-center sm:space-x-6 space-y-4 sm:space-y-0">
+     <img alt="ภาพบัตรประชาชนไทยแสดงเลขบัตร 1234567890123" class="rounded-lg shadow-md w-full sm:w-1/2 object-cover" height="200" loading="lazy" src="https://storage.googleapis.com/a1aa/image/228c89f5-0a6a-41fa-f352-e1011e49469a.jpg" width="300"/>
+     <div class="text-gray-700 text-base sm:w-1/2">
+      <p>
+       ตัวอย่าง: เลขท้ายบัตรประชาชน 12 หรือ รวมเลขทั้งหมด 1+2+3+4+5+6+7+8+9+0+1+2+3 = 51
+      </p>
+      <p class="mt-2 font-semibold text-indigo-600">
+       5 + 1 = 6
+      </p>
+      <p class="mt-2">
+       ดังนั้นเลขที่ใช้วิเคราะห์คือ
+       <span class="font-bold text-indigo-700">
+        6
+       </span>
+      </p>
+     </div>
+    </div>
+   </section>
+   <!-- Section: เลขที่ชอบ -->
+   <section class="bg-white rounded-lg shadow p-6" id="favorite">
+    <h2 class="text-3xl font-bold text-indigo-700 mb-6 flex items-center gap-3">
+     <i class="fas fa-star text-indigo-500">
+     </i>
+     เลขที่ชอบ
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+     <!-- Number 1 -->
+     <article class="border border-indigo-200 rounded-lg p-5 shadow-sm hover:shadow-md transition">
+      <h3 class="text-xl font-bold text-indigo-700 mb-3 flex items-center gap-2">
+       เลข 1 – ผู้นำ มั่นใจ ชัดเจน
+       <i class="fas fa-user-tie text-indigo-500">
+       </i>
+      </h3>
+      <ul class="space-y-2 text-gray-700">
+       <li>
+        ❤️
+        <strong>
+         ความรัก:
+        </strong>
+        มักรักแบบจริงจัง ชอบควบคุมความสัมพันธ์ ต้องระวังการเอาแต่ใจ
+       </li>
+       <li>
+        💼
+        <strong>
+         การงาน:
+        </strong>
+        เหมาะกับตำแหน่งผู้นำ เจ้าของกิจการ หรือสายบริหาร
+       </li>
+       <li>
+        💰
+        <strong>
+         การเงิน:
+        </strong>
+        ใช้เงินเก่ง แต่ก็หาเก่ง ถ้าบริหารดีจะมั่นคง
+       </li>
+       <li>
+        📚
+        <strong>
+         การเรียน:
+        </strong>
+        ชอบเรียนรู้สิ่งที่ตัวเองสนใจจริง ๆ มักประสบความสำเร็จ
+       </li>
+       <li>
+        🏆
+        <strong>
+         ความสำเร็จ:
+        </strong>
+        มีโอกาสไปได้ไกลด้วยความมุ่งมั่นและไม่ยอมแพ้
+       </li>
+      </ul>
+     </article>
+     <!-- Number 2 -->
+     <article class="border border-indigo-200 rounded-lg p-5 shadow-sm hover:shadow-md transition">
+      <h3 class="text-xl font-bold text-indigo-700 mb-3 flex items-center gap-2">
+       เลข 2 – อ่อนโยน เข้าใจคนอื่น
+       <i class="fas fa-hands-helping text-indigo-500">
+       </i>
+      </h3>
+      <ul class="space-y-2 text-gray-700">
+       <li>
+        ❤️
+        <strong>
+         ความรัก:
+        </strong>
+        โรแมนติก ชอบเอาใจคนรัก เหมาะกับความสัมพันธ์ที่มั่นคง
+       </li>
+       <li>
+        💼
+        <strong>
+         การงาน:
+        </strong>
+        เหมาะงานบริการ พยาบาล ครู งานที่ต้องใช้ความเข้าใจ
+       </li>
+       <li>
+        💰
+        <strong>
+         การเงิน:
+        </strong>
+        ไม่ค่อยฟุ่มเฟือย แต่ต้องระวังการช่วยเหลือคนอื่นจนตัวเองลำบาก
+       </li>
+       <li>
+        📚
+        <strong>
+         การเรียน:
+        </strong>
+        มีความพยายามดี เรียนแบบค่อยเป็นค่อยไป
+       </li>
+       <li>
+        🏆
+        <strong>
+         ความสำเร็จ:
+        </strong>
+        สำเร็จจากการสนับสนุนของคนรอบข้าง ต้องรู้จักพึ่งตัวเองด้วย
+       </li>
+      </ul>
+     </article>
+     <!-- Number 3 -->
+     <article class="border border-indigo-200 rounded-lg p-5 shadow-sm hover:shadow-md transition">
+      <h3 class="text-xl font-bold text-indigo-700 mb-3 flex items-center gap-2">
+       เลข 3 – ร่าเริง พลังเยอะ มั่นใจ
+       <i class="fas fa-bolt text-indigo-500">
+       </i>
+      </h3>
+      <ul class="space-y-2 text-gray-700">
+       <li>
+        ❤️
+        <strong>
+         ความรัก:
+        </strong>
+        รักสนุก ชอบความตื่นเต้น ไม่ชอบอะไรที่จืดชืด
+       </li>
+       <li>
+        💼
+        <strong>
+         การงาน:
+        </strong>
+        เหมาะกับงานที่ใช้พลัง เช่น นักขาย พิธีกร หรือสายครีเอทีฟ
+       </li>
+       <li>
+        💰
+        <strong>
+         การเงิน:
+        </strong>
+        หาเงินเก่ง แต่ใช้เงินไว ต้องวางแผนให้ดี
+       </li>
+       <li>
+        📚
+        <strong>
+         การเรียน:
+        </strong>
+        เรียนดีเมื่อมีแรงจูงใจ ขี้เบื่อบ้าง แต่มีความคิดสร้างสรรค์
+       </li>
+       <li>
+        🏆
+        <strong>
+         ความสำเร็จ:
+        </strong>
+        สำเร็จเร็วถ้ารู้จักโฟกัสและไม่ใจร้อน
+       </li>
+      </ul>
+     </article>
+     <!-- Number 4 -->
+     <article class="border border-indigo-200 rounded-lg p-5 shadow-sm hover:shadow-md transition">
+      <h3 class="text-xl font-bold text-indigo-700 mb-3 flex items-center gap-2">
+       เลข 4 – มีระเบียบ จริงจัง
+       <i class="fas fa-clipboard-list text-indigo-500">
+       </i>
+      </h3>
+      <ul class="space-y-2 text-gray-700">
+       <li>
+        ❤️
+        <strong>
+         ความรัก:
+        </strong>
+        รักมั่นคง ชอบความชัดเจน บางครั้งอาจดูน่าเบื่อแต่จริงใจ
+       </li>
+       <li>
+        💼
+        <strong>
+         การงาน:
+        </strong>
+        เหมาะกับงานเอกสาร วิศวกร ธุรกิจระบบ งานวางแผน
+       </li>
+       <li>
+        💰
+        <strong>
+         การเงิน:
+        </strong>
+        ชอบวางแผนการเงิน เก็บเงินเก่ง
+       </li>
+       <li>
+        📚
+        <strong>
+         การเรียน:
+        </strong>
+        ขยัน เรียนดีโดยเฉพาะวิชาที่เป็นระบบ
+       </li>
+       <li>
+        🏆
+        <strong>
+         ความสำเร็จ:
+        </strong>
+        สำเร็จด้วยความพยายาม ระยะยาว มั่นคง
+       </li>
+      </ul>
+     </article>
+     <!-- Number 5 -->
+     <article class="border border-indigo-200 rounded-lg p-5 shadow-sm hover:shadow-md transition">
+      <h3 class="text-xl font-bold text-indigo-700 mb-3 flex items-center gap-2">
+       เลข 5 – นักปรับตัว ฉลาด เรียนรู้ไว
+       <i class="fas fa-sync-alt text-indigo-500">
+       </i>
+      </h3>
+      <ul class="space-y-2 text-gray-700">
+       <li>
+        ❤️
+        <strong>
+         ความรัก:
+        </strong>
+        รักอิสระ ไม่ชอบผูกมัด ต้องให้พื้นที่
+       </li>
+       <li>
+        💼
+        <strong>
+         การงาน:
+        </strong>
+        เหมาะกับงานที่เปลี่ยนแปลงบ่อย เช่น สื่อ เทคโนโลยี นักเดินทาง
+       </li>
+       <li>
+        💰
+        <strong>
+         การเงิน:
+        </strong>
+        รายได้ไม่แน่นอนแต่มีช่องทางเยอะ
+       </li>
+       <li>
+        📚
+        <strong>
+         การเรียน:
+        </strong>
+        เรียนรู้เร็วโดยเฉพาะสิ่งใหม่ ๆ หรือสายงานทันสมัย
+       </li>
+       <li>
+        🏆
+        <strong>
+         ความสำเร็จ:
+        </strong>
+        สำเร็จไวถ้ารู้จักวางแผน ไม่สับสนกับตัวเอง
+       </li>
+      </ul>
+     </article>
+     <!-- Number 6 -->
+     <article class="border border-indigo-200 rounded-lg p-5 shadow-sm hover:shadow-md transition">
+      <h3 class="text-xl font-bold text-indigo-700 mb-3 flex items-center gap-2">
+       เลข 6 – ศิลปิน อารมณ์ดี รักบ้าน
+       <i class="fas fa-palette text-indigo-500">
+       </i>
+      </h3>
+      <ul class="space-y-2 text-gray-700">
+       <li>
+        ❤️
+        <strong>
+         ความรัก:
+        </strong>
+        รักแบบทุ่มเท มีเสน่ห์ ชอบดูแลคนรัก
+       </li>
+       <li>
+        💼
+        <strong>
+         การงาน:
+        </strong>
+        เหมาะกับงานศิลปะ ความงาม งานที่ใช้หัวใจ
+       </li>
+       <li>
+        💰
+        <strong>
+         การเงิน:
+        </strong>
+        หาเงินได้ดีถ้าทำสิ่งที่รัก ต้องระวังใจอ่อน
+       </li>
+       <li>
+        📚
+        <strong>
+         การเรียน:
+        </strong>
+        เก่งในวิชาสายศิลป์ มักเรียนดีถ้าเรียนในสิ่งที่รัก
+       </li>
+       <li>
+        🏆
+        <strong>
+         ความสำเร็จ:
+        </strong>
+        สำเร็จจากความรักในสิ่งที่ทำและการเป็นที่รักของคนรอบตัว
+       </li>
+      </ul>
+     </article>
+     <!-- Number 7 -->
+     <article class="border border-indigo-200 rounded-lg p-5 shadow-sm hover:shadow-md transition">
+      <h3 class="text-xl font-bold text-indigo-700 mb-3 flex items-center gap-2">
+       เลข 7 – ลึกซึ้ง ฉลาด มีญาณ
+       <i class="fas fa-brain text-indigo-500">
+       </i>
+      </h3>
+      <ul class="space-y-2 text-gray-700">
+       <li>
+        ❤️
+        <strong>
+         ความรัก:
+        </strong>
+        รักเงียบ ๆ ลึกซึ้ง ชอบความสัมพันธ์ที่มีคุณภาพ
+       </li>
+       <li>
+        💼
+        <strong>
+         การงาน:
+        </strong>
+        เหมาะกับสายวิชาการ วิจัย งานจิตวิทยา นักเขียน
+       </li>
+       <li>
+        💰
+        <strong>
+         การเงิน:
+        </strong>
+        หาเงินจากความรู้ดี แต่ไม่ค่อยโชคทางเงินก้อนใหญ่
+       </li>
+       <li>
+        📚
+        <strong>
+         การเรียน:
+        </strong>
+        เรียนเก่ง ชอบวิเคราะห์ มีสมาธิ
+       </li>
+       <li>
+        🏆
+        <strong>
+         ความสำเร็จ:
+        </strong>
+        สำเร็จจากความลึกซึ้งและความรู้จริง
+       </li>
+      </ul>
+     </article>
+     <!-- Number 8 -->
+     <article class="border border-indigo-200 rounded-lg p-5 shadow-sm hover:shadow-md transition">
+      <h3 class="text-xl font-bold text-indigo-700 mb-3 flex items-center gap-2">
+       เลข 8 – นักสู้ กล้าตัดสินใจ
+       <i class="fas fa-fist-raised text-indigo-500">
+       </i>
+      </h3>
+      <ul class="space-y-2 text-gray-700">
+       <li>
+        ❤️
+        <strong>
+         ความรัก:
+        </strong>
+        รักจริงจัง ตรงไปตรงมา อาจดูดุแต่จริงใจ
+       </li>
+       <li>
+        💼
+        <strong>
+         การงาน:
+        </strong>
+        เหมาะกับธุรกิจส่วนตัว นักเจรจา งานบริหารระดับสูง
+       </li>
+       <li>
+        💰
+        <strong>
+         การเงิน:
+        </strong>
+        หาเงินเก่ง มีโชคการเงินใหญ่ ๆ แต่ต้องระวังการใช้จ่ายเกินตัว
+       </li>
+       <li>
+        📚
+        <strong>
+         การเรียน:
+        </strong>
+        เรียนรู้ดีเมื่อตั้งใจ ชอบความท้าทาย
+       </li>
+       <li>
+        🏆
+        <strong>
+         ความสำเร็จ:
+        </strong>
+        มีพลังจะสำเร็จได้สูงมาก หากควบคุมอารมณ์ดี
+       </li>
+      </ul>
+     </article>
+     <!-- Number 9 -->
+     <article class="border border-indigo-200 rounded-lg p-5 shadow-sm hover:shadow-md transition">
+      <h3 class="text-xl font-bold text-indigo-700 mb-3 flex items-center gap-2">
+       เลข 9 – เมตตา ฉลาดทางจิตวิญญาณ
+       <i class="fas fa-heart text-indigo-500">
+       </i>
+      </h3>
+      <ul class="space-y-2 text-gray-700">
+       <li>
+        ❤️
+        <strong>
+         ความรัก:
+        </strong>
+        รักแบบเข้าอกเข้าใจ ไม่ผูกมัด ชอบช่วยเหลือ
+       </li>
+       <li>
+        💼
+        <strong>
+         การงาน:
+        </strong>
+        เหมาะกับงานจิตอาสา มูลนิธิ ครู นักบำบัด
+       </li>
+       <li>
+        💰
+        <strong>
+         การเงิน:
+        </strong>
+        ไม่ติดวัตถุ ใช้เงินเพื่อประโยชน์ของผู้อื่น
+       </li>
+       <li>
+        📚
+        <strong>
+         การเรียน:
+        </strong>
+        ชอบเรียนรู้อะไรลึก ๆ จิตวิญญาณ ประวัติศาสตร์ ศิลปะ
+       </li>
+       <li>
+        🏆
+        <strong>
+         ความสำเร็จ:
+        </strong>
+        สำเร็จด้วยการให้ แบ่งปัน และการมีจุดยืนในชีวิต
+       </li>
+      </ul>
+     </article>
+    </div>
+   </section>
+   <!-- Section: ลักษณะนิสัยจากวันเกิด (1-31) -->
+   <section class="bg-white rounded-lg shadow p-6" id="birthdaytraits">
+    <h2 class="text-3xl font-bold text-indigo-700 mb-6 flex items-center gap-3">
+     <i class="fas fa-calendar-day text-indigo-500">
+     </i>
+     ลักษณะนิสัยจาก "วันเกิด" (1–31)
+    </h2>
+    <p class="mb-6 text-gray-700 text-lg leading-relaxed">
+     ตัวเลขของวันเกิดบ่งบอกบุคลิกพื้นฐานที่ติดตัวคุณมาตั้งแต่เกิด
+    </p>
+    <div class="overflow-x-auto">
+     <table class="min-w-full border border-indigo-200 rounded-lg divide-y divide-indigo-200">
+      <thead class="bg-indigo-100">
+       <tr>
+        <th class="px-4 py-3 text-left text-indigo-700 font-semibold w-24">
+         วันที่
+        </th>
+        <th class="px-4 py-3 text-left text-indigo-700 font-semibold">
+         ลักษณะนิสัยโดยรวม
+        </th>
+       </tr>
+      </thead>
+      <tbody class="divide-y divide-indigo-200 bg-white">
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         1
+        </td>
+        <td class="px-4 py-3">
+         เป็นผู้นำ ชัดเจน มั่นใจในตัวเอง
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         2
+        </td>
+        <td class="px-4 py-3">
+         อ่อนไหว อ่อนโยน เข้าใจคนอื่น
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         3
+        </td>
+        <td class="px-4 py-3">
+         ร่าเริง มั่นใจ ชอบเข้าสังคม
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         4
+        </td>
+        <td class="px-4 py-3">
+         จริงจัง เจ้าระเบียบ ชอบวางแผน
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         5
+        </td>
+        <td class="px-4 py-3">
+         ฉลาด ปรับตัวเก่ง รักอิสระ
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         6
+        </td>
+        <td class="px-4 py-3">
+         โรแมนติก ใจดี รักศิลปะ
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         7
+        </td>
+        <td class="px-4 py-3">
+         ลึกซึ้ง ช่างคิด ชอบอยู่เงียบ ๆ
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         8
+        </td>
+        <td class="px-4 py-3">
+         มุ่งมั่น มีพลัง ชอบความสำเร็จ
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         9
+        </td>
+        <td class="px-4 py-3">
+         ใจบุญ มีเมตตา รักช่วยเหลือ
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         10
+        </td>
+        <td class="px-4 py-3">
+         กล้า มั่นใจสูง รักอิสระ
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         11
+        </td>
+        <td class="px-4 py-3">
+         มีเสน่ห์ ละเอียดอ่อน มีเซนส์พิเศษ
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         12
+        </td>
+        <td class="px-4 py-3">
+         สนุกสนาน ชอบเรียนรู้ มีพลังบวก
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         13
+        </td>
+        <td class="px-4 py-3">
+         เจ้าระเบียบ จริงจัง ใฝ่เรียนรู้
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         14
+        </td>
+        <td class="px-4 py-3">
+         ฉลาดรอบตัว ปรับตัวเก่ง
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         15
+        </td>
+        <td class="px-4 py-3">
+         นุ่มนวล รักความสบาย ชอบสังคม
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         16
+        </td>
+        <td class="px-4 py-3">
+         มีอารมณ์ศิลป์ ละเอียดอ่อน
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         17
+        </td>
+        <td class="px-4 py-3">
+         เข้มแข็ง พึ่งพาได้
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         18
+        </td>
+        <td class="px-4 py-3">
+         กล้าหาญ ไม่กลัวปัญหา
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         19
+        </td>
+        <td class="px-4 py-3">
+         ผู้นำโดยธรรมชาติ มีพลังล้น
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         20
+        </td>
+        <td class="px-4 py-3">
+         มีความรักในความสงบ เป็นมิตร
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         21
+        </td>
+        <td class="px-4 py-3">
+         คิดเร็ว ทำเร็ว พูดเก่ง
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         22
+        </td>
+        <td class="px-4 py-3">
+         เป็นคนลึกซึ้ง ไม่ชอบเผยใจง่าย
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         23
+        </td>
+        <td class="px-4 py-3">
+         มีความคิดสร้างสรรค์ ช่างฝัน
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         24
+        </td>
+        <td class="px-4 py-3">
+         ใจดี มีน้ำใจ ชอบช่วยเหลือ
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         25
+        </td>
+        <td class="px-4 py-3">
+         นักปรัชญา คิดลึก เข้าใจโลก
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         26
+        </td>
+        <td class="px-4 py-3">
+         ทะเยอทะยาน ต้องการยืนบนขาตัวเอง
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         27
+        </td>
+        <td class="px-4 py-3">
+         ชอบความแปลกใหม่ ไม่หยุดนิ่ง
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         28
+        </td>
+        <td class="px-4 py-3">
+         หัวไว ตัดสินใจเร็ว กล้าได้กล้าเสีย
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         29
+        </td>
+        <td class="px-4 py-3">
+         มีญาณ ทรงพลังทางจิตวิญญาณ
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         30
+        </td>
+        <td class="px-4 py-3">
+         สื่อสารเก่ง มีพลังในคำพูด
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         31
+        </td>
+        <td class="px-4 py-3">
+         มีวินัย อดทน มั่นคง
+        </td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </section>
+   <!-- Section: ลักษณะโดยรวมจากเดือนเกิด -->
+   <section class="bg-white rounded-lg shadow p-6" id="monthtraits">
+    <h2 class="text-3xl font-bold text-indigo-700 mb-6 flex items-center gap-3">
+     <i class="fas fa-calendar-alt text-indigo-500">
+     </i>
+     🌙 ลักษณะโดยรวมจาก เดือนเกิด
+    </h2>
+    <div class="overflow-x-auto">
+     <table class="min-w-full border border-indigo-200 rounded-lg divide-y divide-indigo-200">
+      <thead class="bg-indigo-100">
+       <tr>
+        <th class="px-4 py-3 text-left text-indigo-700 font-semibold w-48">
+         เดือน
+        </th>
+        <th class="px-4 py-3 text-left text-indigo-700 font-semibold">
+         ลักษณะทั่วไป
+        </th>
+       </tr>
+      </thead>
+      <tbody class="divide-y divide-indigo-200 bg-white">
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         มกราคม
+        </td>
+        <td class="px-4 py-3">
+         มีวินัยสูง ทะเยอทะยาน มักโตเร็วเกินวัย
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         กุมภาพันธ์
+        </td>
+        <td class="px-4 py-3">
+         อิสระ มีเสน่ห์ทางความคิด ฉลาดลึก
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         มีนาคม
+        </td>
+        <td class="px-4 py-3">
+         ใจดี จิตใจอ่อนโยน มีพลังศิลป์
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         เมษายน
+        </td>
+        <td class="px-4 py-3">
+         กล้าแสดงออก พูดตรง ร้อนแรง
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         พฤษภาคม
+        </td>
+        <td class="px-4 py-3">
+         เจ้าระเบียบ ชอบสิ่งที่มั่นคง จริงใจ
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         มิถุนายน
+        </td>
+        <td class="px-4 py-3">
+         ช่างคิด ช่างฝัน มีโลกส่วนตัวสูง
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         กรกฎาคม
+        </td>
+        <td class="px-4 py-3">
+         อารมณ์อ่อนไหว ห่วงใยครอบครัว
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         สิงหาคม
+        </td>
+        <td class="px-4 py-3">
+         เป็นผู้นำโดยธรรมชาติ คิดก่อนทำ
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         กันยายน
+        </td>
+        <td class="px-4 py-3">
+         ละเอียด รอบคอบ รักความรู้
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         ตุลาคม
+        </td>
+        <td class="px-4 py-3">
+         โรแมนติก รักความยุติธรรม มีเสน่ห์
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         พฤศจิกายน
+        </td>
+        <td class="px-4 py-3">
+         มีพลังภายในสูง ลึกลับ น่าค้นหา
+        </td>
+       </tr>
+       <tr class="hover:bg-indigo-50 transition">
+        <td class="px-4 py-3 font-semibold text-indigo-600">
+         ธันวาคม
+        </td>
+        <td class="px-4 py-3">
+         ใจกว้าง มีอุดมการณ์ มักเป็นนักเดินทาง
+        </td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </section>
+  </main>
+  <footer class="bg-indigo-700 text-indigo-100 py-6 mt-16">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
+    © 2024 เลขศาสตร์และลักษณะนิสัย. สงวนลิขสิทธิ์.
+   </div>
+  </footer>
+  <script>
+   const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+ </body>
+</html>
